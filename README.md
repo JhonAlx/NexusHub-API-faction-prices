@@ -1,1 +1,1 @@
-# NexusHub-API-faction-prices
+# NexusHub API faction prices checker
