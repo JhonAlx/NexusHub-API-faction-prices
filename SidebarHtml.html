@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function(){
+        $("#regionDropdown").change(function(){
+          var region = this.value;
+          
+          switch(region)
+          {
+            case "EU":
+              $('#serverDropdown').empty();
+              
+              var filteredData = servers.filter(item => {
+                return item.region == "EU";
+              })
+              
+              $.each(filteredData, function(i, p) {
+                $('#serverDropdown').append($('<option></option>').val(p.slug).html(p.name));
+               });
+              
+              break;
+            case "US":
+              $('#serverDropdown').empty();
+              
+              var filteredData = servers.filter(item => {
+                return item.region == "US";
+              })
+              
+              $.each(filteredData, function(i, p) {
+                $('#serverDropdown').append($('<option></option>').val(p.slug).html(p.name));
+               });
+               
+              break;
+          }
+        });
+        
+        $('#regionDropdown').trigger('change');
+        
+        loadValues();
+        
+        $("#generateBtn").click(function(e){
+          $("#serverForm").submit();
+        });
+      });
+      
+      var servers = 
+      [
+        {
+          "slug": "amnennar",
+          "name": "Amnennar",
+          "region": "EU"
+        },
+        {
+          "slug": "anathema",
+          "name": "Anathema",
+          "region": "US"
+        },
+        {
+          "slug": "arcanite-reaper",
+          "name": "Arcanite Reaper",
+          "region": "US"
+        },
+        {
+          "slug": "arugal",
+          "name": "Arugal",
+          "region": "US"
+        },
+        {
+          "slug": "ashbringer",
+          "name": "Ashbringer",
+          "region": "EU"
+        },
+        {
+          "slug": "ashkandi",
+          "name": "Ashkandi",
+          "region": "US"
+        },
+        {
+          "slug": "atiesh",
+          "name": "Atiesh",
+          "region": "US"
+        },
+        {
+          "slug": "auberdine",
+          "name": "Auberdine",
+          "region": "EU"
+        },
+        {
+          "slug": "azuresong",
+          "name": "Azuresong",
+          "region": "US"
+        },
+        {
+          "slug": "benediction",
+          "name": "Benediction",
+          "region": "US"
+        },
+        {
+          "slug": "bigglesworth",
+          "name": "Bigglesworth",
+          "region": "US"
+        },
+        {
+          "slug": "blaumeux",
+          "name": "Blaumeux",
+          "region": "US"
+        },
+        {
+          "slug": "bloodfang",
+          "name": "Bloodfang",
+          "region": "EU"
+        },
+        {
+          "slug": "bloodsail-buccaneers",
+          "name": "Bloodsail Buccaneers",
+          "region": "US"
+        },
+        {
+          "slug": "celebras",
+          "name": "Celebras",
+          "region": "EU"
+        },
+        {
+          "slug": "deviate-delight",
+          "name": "Deviate Delight",
+          "region": "US"
+        },
+        {
+          "slug": "dragons-call",
+          "name": "Dragon's Call",
+          "region": "EU"
+        },
+        {
+          "slug": "dragonfang",
+          "name": "Dragonfang",
+          "region": "EU"
+        },
+        {
+          "slug": "dreadmist",
+          "name": "Dreadmist",
+          "region": "EU"
+        },
+        {
+          "slug": "earthfury",
+          "name": "Earthfury",
+          "region": "US"
+        },
+        {
+          "slug": "earthshaker",
+          "name": "Earthshaker",
+          "region": "EU"
+        },
+        {
+          "slug": "everlook",
+          "name": "Everlook",
+          "region": "EU"
+        },
+        {
+          "slug": "faerlina",
+          "name": "Faerlina",
+          "region": "US"
+        },
+        {
+          "slug": "fairbanks",
+          "name": "Fairbanks",
+          "region": "US"
+        },
+        {
+          "slug": "felstriker",
+          "name": "Felstriker",
+          "region": "US"
+        },
+        {
+          "slug": "finkle",
+          "name": "Finkle",
+          "region": "EU"
+        },
+        {
+          "slug": "firemaw",
+          "name": "Firemaw",
+          "region": "EU"
+        },
+        {
+          "slug": "flamelash",
+          "name": "Flamelash",
+          "region": "EU"
+        },
+        {
+          "slug": "gandling",
+          "name": "Gandling",
+          "region": "EU"
+        },
+        {
+          "slug": "gehennas",
+          "name": "Gehennas",
+          "region": "EU"
+        },
+        {
+          "slug": "golemagg",
+          "name": "Golemagg",
+          "region": "EU"
+        },
+        {
+          "slug": "grobbulus",
+          "name": "Grobbulus",
+          "region": "US"
+        },
+        {
+          "slug": "heartseeker",
+          "name": "Heartseeker",
+          "region": "US"
+        },
+        {
+          "slug": "heartstriker",
+          "name": "Heartstriker",
+          "region": "EU"
+        },
+        {
+          "slug": "herod",
+          "name": "Herod",
+          "region": "US"
+        },
+        {
+          "slug": "hydraxian-waterlords",
+          "name": "Hydraxian Waterlords",
+          "region": "EU"
+        },
+        {
+          "slug": "incendius",
+          "name": "Incendius",
+          "region": "US"
+        },
+        {
+          "slug": "judgement",
+          "name": "Judgement",
+          "region": "EU"
+        },
+        {
+          "slug": "kirtonos",
+          "name": "Kirtonos",
+          "region": "US"
+        },
+        {
+          "slug": "kromcrush",
+          "name": "Kromcrush",
+          "region": "US"
+        },
+        {
+          "slug": "kurinnaxx",
+          "name": "Kurinnaxx",
+          "region": "US"
+        },
+        {
+          "slug": "lakeshire",
+          "name": "Lakeshire",
+          "region": "EU"
+        },
+        {
+          "slug": "loatheb",
+          "name": "Loatheb",
+          "region": "US"
+        },
+        {
+          "slug": "lucifron",
+          "name": "Lucifron",
+          "region": "EU"
+        },
+        {
+          "slug": "mandokir",
+          "name": "Mandokir",
+          "region": "EU"
+        },
+        {
+          "slug": "mankrik",
+          "name": "Mankrik",
+          "region": "US"
+        },
+        {
+          "slug": "mirage-raceway",
+          "name": "Mirage Raceway",
+          "region": "EU"
+        },
+        {
+          "slug": "mograine",
+          "name": "Mograine",
+          "region": "EU"
+        },
+        {
+          "slug": "myzrael",
+          "name": "Myzrael",
+          "region": "US"
+        },
+        {
+          "slug": "nethergarde-keep",
+          "name": "Nethergarde Keep",
+          "region": "EU"
+        },
+        {
+          "slug": "netherwind",
+          "name": "Netherwind",
+          "region": "US"
+        },
+        {
+          "slug": "noggenfogger",
+          "name": "Noggenfogger",
+          "region": "EU"
+        },
+        {
+          "slug": "old-blanchy",
+          "name": "Old Blanchy",
+          "region": "US"
+        },
+        {
+          "slug": "pagle",
+          "name": "Pagle",
+          "region": "US"
+        },
+        {
+          "slug": "patchwerk",
+          "name": "Patchwerk",
+          "region": "EU"
+        },
+        {
+          "slug": "pyrewood-village",
+          "name": "Pyrewood Village",
+          "region": "EU"
+        },
+        {
+          "slug": "rattlegore",
+          "name": "Rattlegore",
+          "region": "US"
+        },
+        {
+          "slug": "razorfen",
+          "name": "Razorfen",
+          "region": "EU"
+        },
+        {
+          "slug": "razorgore",
+          "name": "Razorgore",
+          "region": "EU"
+        },
+        {
+          "slug": "remulos",
+          "name": "Remulos",
+          "region": "US"
+        },
+        {
+          "slug": "shazzrah",
+          "name": "Shazzrah",
+          "region": "EU"
+        },
+        {
+          "slug": "skeram",
+          "name": "Skeram",
+          "region": "US"
+        },
+        {
+          "slug": "skullflame",
+          "name": "Skullflame",
+          "region": "EU"
+        },
+        {
+          "slug": "smolderweb",
+          "name": "Smolderweb",
+          "region": "US"
+        },
+        {
+          "slug": "stalagg",
+          "name": "Stalagg",
+          "region": "US"
+        },
+        {
+          "slug": "stonespine",
+          "name": "Stonespine",
+          "region": "EU"
+        },
+        {
+          "slug": "sulthraze",
+          "name": "Sul'thraze",
+          "region": "US"
+        },
+        {
+          "slug": "sulfuras",
+          "name": "Sulfuras",
+          "region": "US"
+        },
+        {
+          "slug": "sulfuron",
+          "name": "Sulfuron",
+          "region": "EU"
+        },
+        {
+          "slug": "ten-storms",
+          "name": "Ten Storms",
+          "region": "EU"
+        },
+        {
+          "slug": "thalnos",
+          "name": "Thalnos",
+          "region": "US"
+        },
+        {
+          "slug": "thunderfury",
+          "name": "Thunderfury",
+          "region": "US"
+        },
+        {
+          "slug": "transcendence",
+          "name": "Transcendence",
+          "region": "EU"
+        },
+        {
+          "slug": "venoxis",
+          "name": "Venoxis",
+          "region": "EU"
+        },
+        {
+          "slug": "westfall",
+          "name": "Westfall",
+          "region": "US"
+        },
+        {
+          "slug": "whitemane",
+          "name": "Whitemane",
+          "region": "US"
+        },
+        {
+          "slug": "windseeker",
+          "name": "Windseeker",
+          "region": "US"
+        },
+        {
+          "slug": "yojamba",
+          "name": "Yojamba",
+          "region": "US"
+        },
+        {
+          "slug": "zandalar-tribe",
+          "name": "Zandalar Tribe",
+          "region": "EU"
+        },
+        {
+          "slug": "doomsayer",
+          "name": "Вестник Рока",
+          "region": "EU"
+        },
+        {
+          "slug": "wyrmthalak",
+          "name": "Змейталак",
+          "region": "EU"
+        },
+        {
+          "slug": "flamegor",
+          "name": "Пламегор",
+          "region": "EU"
+        },
+        {
+          "slug": "rhokdelar",
+          "name": "Рок-Делар",
+          "region": "EU"
+        },
+        {
+          "slug": "chromie",
+          "name": "Хроми",
+          "region": "EU"
+        }
+      ];
+            
+      function handleFormSubmit(formObject) 
+      {
+        $("#regionDropdown").prop("disabled", true);
+        $("#serverDropdown").prop("disabled", true);
+        $("#generateBtn").prop("disabled", true);
+
+        google.script.run
+          .withSuccessHandler(updateControls)
+          .withFailureHandler(showError)
+          .fillPriceData(formObject.regionDropdown.value, formObject.serverDropdown.value);
+      }
+      
+      function updateControls()
+      {
+        $("#regionDropdown").prop("disabled", false);
+        $("#serverDropdown").prop("disabled", false);
+        $("#generateBtn").prop("disabled", false);
+      }
+      
+      function loadValues() {
+        
+        $("#regionDropdown").prop("disabled", true);
+        $("#serverDropdown").prop("disabled", true);
+        $("#generateBtn").prop("disabled", true);
+        
+        google.script.run
+            .withSuccessHandler(function (props) {
+                try 
+                {
+                  console.log(props);
+                  if(props != null)
+                  {
+                    if(props.region != null || props.region != "")
+                    {
+                      $("#regionDropdown").val(props.region);
+                      $('#regionDropdown').trigger('change');
+                    
+                      if(props.server != null || props.server != "")
+                      {
+                        $("#serverDropdown").val(props.server);
+                      }
+                    }
+                  }
+                }
+                catch (e) {
+                    showError(e);
+                }
+                
+                $("#regionDropdown").prop("disabled", false);
+                $("#serverDropdown").prop("disabled", false);
+                $("#generateBtn").prop("disabled", false);
+            })
+            .withFailureHandler(function (error) {
+                showError(msg);
+            })
+            .getProperties();
+      }
+      
+      function showError(ex)
+      {
+        $("#generateBtn").prop("disabled", false);
+        $("#regionDropdown").prop("disabled", false);
+        $("#serverDropdown").prop("disabled", false);
+        alert(ex);        
+      }
+    </script>
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  </head>
+  <body>
+    <div class="sidebar branding-below">
+    <form id="serverForm" onSubmit="handleFormSubmit(this)">
+      <div class=" block form-group">
+        <label for="regionDropdown">Region</label>
+        <select id="regionDropdown" required>
+          <option value="US">US</option>
+          <option value="EU">EU</option>
+        </select>
+      </div>
+      <div class=" block form-group">
+        <label for="serverDropdown">Server</label>
+        <select id="serverDropdown" required>
+          <option>Select a server</option>
+        </select>
+      </div>
+      <br>
+    </form>
+    <button id="generateBtn" class="action">Generate</button>
+  </div>
+  </body>
+</html>      
