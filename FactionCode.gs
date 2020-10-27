@@ -91,8 +91,8 @@ function getProperties()
   var props = PropertiesService.getDocumentProperties();
   
   var data = {
-    "region": props.getProperty("region") || "",
-    "server": props.getProperty("server") || "",
+    "region": props.getProperty("region") || "US",
+    "server": props.getProperty("server") || "anathema",
   };
   
   return data;
