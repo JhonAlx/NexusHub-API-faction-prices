@@ -9,7 +9,7 @@ function onOpen(e) {
 
 function startMenu()
 {
-  var html = HtmlService.createTemplateFromFile("SidebarHtml")
+  var html = HtmlService.createTemplateFromFile("FactionSidebarHtml")
     .evaluate()
     .setTitle("Price check")
     .setWidth(400);
