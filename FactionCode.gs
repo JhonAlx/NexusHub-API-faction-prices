@@ -60,6 +60,8 @@ function fillPriceData(region, server)
     }
     
     sheet.getRange(i + 2, 7).setValue(allyData.stats.lastUpdated);
+    
+    Utilities.sleep(250);
   }
   
   sheet.sort(11, false);
