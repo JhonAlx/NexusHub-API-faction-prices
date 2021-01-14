@@ -34,37 +34,41 @@ function fillPriceData(region, server)
   {
     var allyData = getItemData(server, "alliance", objData[i].itemId);
     var hordeData = getItemData(server, "horde", objData[i].itemId);
+    var currentRow = i + 2;
     
-    sheet.getRange(i + 2, 2).setValue(allyData.name);
+    sheet.getRange(currentRow, 2).setValue(allyData.name);
     
     if(isDataAvailable(allyData.stats.current))
     {
-      sheet.getRange(i + 2, 3).setValue(allyData.stats.current.marketValue / 10000);
-      sheet.getRange(i + 2, 4).setValue(allyData.stats.current.minBuyout / 10000);
+      sheet.getRange(currentRow, 3).setValue(allyData.stats.current.marketValue / 10000);
+      sheet.getRange(currentRow, 4).setValue(allyData.stats.current.minBuyout / 10000);
     }
     else
     {
-      sheet.getRange(i + 2, 3).setValue("No data to show");
-      sheet.getRange(i + 2, 4).setValue("No data to show");
+      sheet.getRange(currentRow, 3).setValue("No data to show");
+      sheet.getRange(currentRow, 4).setValue("No data to show");
     }
     
     if(isDataAvailable(hordeData.stats.current))
     {
-      sheet.getRange(i + 2, 5).setValue(hordeData.stats.current.marketValue / 10000);
-      sheet.getRange(i + 2, 6).setValue(hordeData.stats.current.minBuyout / 10000);
+      sheet.getRange(currentRow, 5).setValue(hordeData.stats.current.marketValue / 10000);
+      sheet.getRange(currentRow, 6).setValue(hordeData.stats.current.minBuyout / 10000);
     }
     else
     {
-      sheet.getRange(i + 2, 5).setValue("No data to show");
-      sheet.getRange(i + 2, 6).setValue("No data to show");
+      sheet.getRange(currentRow, 5).setValue("No data to show");
+      sheet.getRange(currentRow, 6).setValue("No data to show");
     }
     
-    sheet.getRange(i + 2, 7).setValue(allyData.stats.lastUpdated);
+    sheet.getRange(currentRow, 7).setValue(allyData.stats.lastUpdated);
+    sheet.getRange(currentRow, 13).setFormula("=CONCAT(\"https://nexushub.co/wow-classic/items/" + server + "-horde/\" ; A" +  currentRow + ")");
+    sheet.getRange(currentRow, 14).setFormula("=CONCAT(\"https://nexushub.co/wow-classic/items/" + server + "-alliance/\" ; A" +  currentRow + ")");
     
     Utilities.sleep(250);
   }
   
-  sheet.sort(11, false);
+  var nonHeaderRange = sheet.getRange(2, 1, sheet.getLastRow() - 1, sheet.getLastColumn());
+  nonHeaderRange.sort({column: 11, ascending: false});
 }
 
 function isDataAvailable(itemData)

@@ -523,7 +523,7 @@
                 $("#generateBtn").prop("disabled", false);
             })
             .withFailureHandler(function (error) {
-                showError(msg);
+                showError(error);
             })
             .getProperties();
       }
