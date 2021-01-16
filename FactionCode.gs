@@ -61,8 +61,8 @@ function fillPriceData(region, server)
     }
     
     sheet.getRange(currentRow, 7).setValue(allyData.stats.lastUpdated);
-    sheet.getRange(currentRow, 13).setFormula("=CONCAT(\"https://nexushub.co/wow-classic/items/" + server + "-horde/\" ; A" +  currentRow + ")");
-    sheet.getRange(currentRow, 14).setFormula("=CONCAT(\"https://nexushub.co/wow-classic/items/" + server + "-alliance/\" ; A" +  currentRow + ")");
+    sheet.getRange(currentRow, 13).setFormula("=HYPERLINK(CONCAT(\"https://nexushub.co/wow-classic/items/" + server + "-horde/\" ; A" +  currentRow + "), \"Link\")");
+    sheet.getRange(currentRow, 14).setFormula("=HYPERLINK(CONCAT(\"https://nexushub.co/wow-classic/items/" + server + "-alliance/\" ; A" +  currentRow + "), \"Link\")");
     
     Utilities.sleep(250);
   }
